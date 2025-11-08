@@ -1,0 +1,459 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التقرير التفاعلي الشامل - محلل الكتب</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .section {
+            padding: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        .section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .stat-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .stat-content p {
+            margin: 8px 0;
+            color: #555;
+        }
+        
+        .content-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+        
+        .word-cloud {
+            text-align: center;
+            line-height: 2;
+        }
+        
+        .word {
+            display: inline-block;
+            margin: 5px;
+            padding: 5px 10px;
+            background: #667eea;
+            color: white;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .word:hover {
+            background: #764ba2;
+            transform: scale(1.1);
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .data-table th,
+        .data-table td {
+            padding: 12px;
+            text-align: right;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .data-table th {
+            background: #667eea;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .data-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .data-table tr:hover {
+            background: #e3f2fd;
+        }
+        
+
+            margin-bottom: 15px;
+        }
+        
+
+        
+        .entities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .entity-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .entity-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .entity-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .entity-item {
+            background: #667eea;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+        }
+        
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+
+            
+            .entities-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 التقرير التفاعلي الشامل</h1>
+            <p>محلل الكتب العربية - نتائج التحليل الشامل</p>
+            <p>تاريخ التقرير: 2025-11-07 06:50:02</p>
+        </div>
+        
+        
+        <div class="section">
+            <h2>📊 الإحصائيات العامة</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>📝 الكلمات</h3>
+                    <div class="stat-content">
+        <p><strong>إجمالي الكلمات:</strong> 1,265,401</p><p><strong>الكلمات الفريدة:</strong> 193,226</p><p><strong>أكثر كلمة:</strong> الناس (2070 مرة)</p><p><strong>متوسط الطول:</strong> 5.52 حرف</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <h3>🔗 المركبات</h3>
+                    <div class="stat-content">
+        <p><strong>إجمالي المركبات:</strong> 1,265,385</p><p><strong>المركبات الفريدة:</strong> 1,100,025</p><p><strong>المركبات المختارة:</strong> 8,387</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <h3>🏷️ الكيانات</h3>
+                    <div class="stat-content">
+        
+                        <p><strong>الأسماء والأعلام:</strong> 3,901</p>
+                        <p><strong>الدول والمدن:</strong> 35</p>
+                        <p><strong>المؤسسات:</strong> 1,649</p>
+                        <p><strong>التواريخ:</strong> 1,704</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        
+        <div class="section">
+            <h2>📝 الكلمات الأكثر تكراراً</h2>
+            <div class="content-box">
+        <div class="word-cloud"><span class="word" style="font-size: 32px;">الناس</span><span class="word" style="font-size: 32px;">بأن</span><span class="word" style="font-size: 29px;">إليه</span><span class="word" style="font-size: 29px;">يكن</span><span class="word" style="font-size: 29px;">القرن</span><span class="word" style="font-size: 26px;">العالم</span><span class="word" style="font-size: 26px;">شيء</span><span class="word" style="font-size: 26px;">الله</span><span class="word" style="font-size: 26px;">أخرى</span><span class="word" style="font-size: 25px;">الأمر</span><span class="word" style="font-size: 25px;">عرابي</span><span class="word" style="font-size: 25px;">اسپينوزا</span><span class="word" style="font-size: 25px;">أنها</span><span class="word" style="font-size: 25px;">الإنسان</span><span class="word" style="font-size: 25px;">الحياة</span><span class="word" style="font-size: 24px;">يقول</span><span class="word" style="font-size: 23px;">آخر</span><span class="word" style="font-size: 23px;">مصر</span><span class="word" style="font-size: 23px;">عشر</span><span class="word" style="font-size: 22px;">ابن</span>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="section">
+            <h2>🔗 المركبات المختارة تركيبياً</h2>
+            <div class="content-box">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>المرتبة</th>
+                            <th>المركب</th>
+                            <th>PMI</th>
+                            <th>التصنيف</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        
+                        <tr>
+                            <td>1</td>
+                            <td>المسموعة والمرئية</td>
+                            <td>17.949</td>
+                            <td>تركيب ضعيف جداً</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>2</td>
+                            <td>لاس فيجاس</td>
+                            <td>17.949</td>
+                            <td>تركيب ضعيف جداً</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>3</td>
+                            <td>الذكورة والأنوثة،</td>
+                            <td>17.686</td>
+                            <td>تركيب ضعيف جداً</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>4</td>
+                            <td>سيسل رودس</td>
+                            <td>17.686</td>
+                            <td>تركيب ضعيف جداً</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>5</td>
+                            <td>مكسيم لروا</td>
+                            <td>17.686</td>
+                            <td>تركيب ضعيف جداً</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>6</td>
+                            <td>بالوسام المجيدي</td>
+                            <td>17.464</td>
+                            <td>تركيب ضعيف جداً</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>7</td>
+                            <td>الحربين العالميتين</td>
+                            <td>17.271</td>
+                            <td>تركيب ضعيف</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>8</td>
+                            <td>هرية رزنة</td>
+                            <td>17.271</td>
+                            <td>تركيب ضعيف جداً</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>9</td>
+                            <td>جيئة وذهابا</td>
+                            <td>17.271</td>
+                            <td>تركيب ضعيف جداً</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>10</td>
+                            <td>البائع المتجول</td>
+                            <td>17.271</td>
+                            <td>تركيب ضعيف جداً</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>11</td>
+                            <td>عنخ آمون</td>
+                            <td>17.271</td>
+                            <td>تركيب ضعيف جداً</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>12</td>
+                            <td>كوثر حاسيس</td>
+                            <td>17.271</td>
+                            <td>تركيب ضعيف جداً</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>13</td>
+                            <td>هارتفورد كورانت</td>
+                            <td>17.241</td>
+                            <td>تركيب ضعيف جداً</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>14</td>
+                            <td>حمضا أمينيا</td>
+                            <td>17.101</td>
+                            <td>تركيب ضعيف</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>15</td>
+                            <td>المواقف، سيلتمس</td>
+                            <td>17.101</td>
+                            <td>تركيب ضعيف</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>16</td>
+                            <td>ملعب السوبردوم</td>
+                            <td>17.101</td>
+                            <td>تركيب ضعيف جداً</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>17</td>
+                            <td>أحماض أمينية</td>
+                            <td>17.049</td>
+                            <td>تركيب ضعيف جداً</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>18</td>
+                            <td>يغرب أفهامنا</td>
+                            <td>17.008</td>
+                            <td>تركيب ضعيف جداً</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>19</td>
+                            <td>الأستاذين العبادي</td>
+                            <td>17.008</td>
+                            <td>تركيب ضعيف جداً</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>20</td>
+                            <td>العبادي وبدران</td>
+                            <td>17.008</td>
+                            <td>تركيب ضعيف جداً</td>
+                        </tr>
+                    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        
+        <div class="section">
+            <h2>🏷️ الكيانات المسماة</h2>
+            <div class="entities-grid">
+                <div class="entity-card">
+                    <h3>👤 الأسماء والأعلام</h3>
+                    <div class="entity-list">
+        <span class="entity-item">عرابي</span><span class="entity-item">عصر</span><span class="entity-item">الثاني</span><span class="entity-item">صحيفة</span><span class="entity-item">نجد</span><span class="entity-item">فرنسا</span>
+                    </div>
+                </div>
+                <div class="entity-card">
+                    <h3>🌍 الدول والمدن</h3>
+                    <div class="entity-list">
+        <span class="entity-item">مصر</span><span class="entity-item">دمشق</span><span class="entity-item">السودان</span><span class="entity-item">القاهرة</span><span class="entity-item">العراق</span><span class="entity-item">فلسطين</span>
+                    </div>
+                </div>
+                <div class="entity-card">
+                    <h3>🏢 المؤسسات والمنظمات</h3>
+                    <div class="entity-list">
+        <span class="entity-item">مجلس النواب</span><span class="entity-item">مجلس اللوردات</span><span class="entity-item">مجلس الشيوخ</span><span class="entity-item">هيئة الاشتراعية</span><span class="entity-item">مجلس النواب،</span><span class="entity-item">مجلس الوزراء</span>
+                    </div>
+                </div>
+                <div class="entity-card">
+                    <h3>📅 التواريخ والأماكن</h3>
+                    <div class="entity-list">
+        <span class="entity-item">٢٠١٥</span><span class="entity-item">٢٠١٤</span><span class="entity-item">١٩٧٠</span><span class="entity-item">١٨٨٢</span><span class="entity-item">١٠٠٠</span><span class="entity-item">٢٠١٢</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="footer">
+            <p>تم إنشاء هذا التقرير بواسطة محلل الكتب الشامل</p>
+            <p>جميع النتائج محفوظة في ملفات txt في مجلد نتائج_التحليل</p>
+        </div>
+    </div>
+</body>
+</html>
+        
