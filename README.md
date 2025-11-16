@@ -180,3 +180,159 @@ python تشغيل_شامل.py
 - [ ] تحسين خوارزميات استخراج الكيانات
 - [ ] إضافة المزيد من مقاييس التحليل
 - [ ] دعم التحليل متعدد اللغات
+
+---
+
+# [English]
+
+<div dir="ltr">
+
+## Data Analyzer
+
+An advanced tool for comprehensive analysis of Arabic texts with multiple linguistic and statistical analysis capabilities.
+
+![Python](https://img.shields.io/badge/Python-3.6+-blue.svg)
+![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+
+## Features
+
+### 1. Text Processing
+- Clean texts from symbols and numbers
+- Remove diacritics and vowels
+- Remove empty lines and extra spaces
+- Advanced processing for Arabic texts
+
+### 2. Word Analysis
+- Extract all words and unique words
+- Calculate word frequency
+- Analyze word length
+- Comprehensive word statistics
+
+### 3. N-gram Analysis (Bigrams/Trigrams)
+- Extract bigrams and trigrams
+- Calculate n-gram frequency
+- Syntactic collocation analysis with:
+  - Association measures (PMI, T-score, Log-likelihood)
+  - Structure strength classification
+  - Contextual analysis
+
+### 4. Named Entity Recognition
+- Names and proper nouns
+- Countries and cities
+- Organizations and institutions
+- Dates and places
+
+### 5. Topic Analysis
+- LDA model for topic extraction
+- File classification by topics
+- Topic statistics
+
+### 6. Interactive Reports
+- Comprehensive interactive HTML report
+- Charts and visual statistics
+- Beautiful user interface
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/ayzem88/data-analyzer.git
+cd data-analyzer
+```
+
+2. Requirements:
+- Python 3.6 or later
+- No external libraries needed (uses standard libraries only)
+
+## Usage
+
+### 1. File Setup
+
+```
+data-analyzer/
+├── المدونة/              # Place txt files here
+├── stop_words.txt         # Stop words file
+├── الأعلام والشخصيات.txt # Names database
+├── الدول والمدن.txt      # Countries database
+├── المنظمات والمؤسسات.txt # Organizations database
+└── || التشغيل هنا ||.py  # Main run file
+```
+
+### 2. Run the Analyzer
+
+```bash
+# Run basic analyzer
+python "|| التشغيل هنا ||.py"
+
+# Or comprehensive run (analyzer + interactive report)
+python تشغيل_شامل.py
+```
+
+### 3. Results
+
+A `نتائج_التحليل` folder will be created containing all results.
+
+## Project Structure
+
+```
+data-analyzer/
+├── المحلل_الرئيسي.py          # Main analyzer
+├── معالج_النصوص.py            # Text processor
+├── محلل_الكلمات.py           # Word analyzer
+├── محلل_المركبات.py          # N-gram analyzer
+├── مستخرج_الكيانات.py        # Entity extractor
+├── منشئ_التقرير_التفاعلي.py  # Interactive report generator
+├── تشغيل_شامل.py              # Comprehensive run file
+├── || التشغيل هنا ||.py       # Basic run file
+├── المدونة/                   # Text files folder
+├── نتائج_التحليل/            # Results folder
+└── README.md                   # This file
+```
+
+## Main Files
+
+- `المحلل_الرئيسي.py`: Main analyzer that coordinates all operations
+- `معالج_النصوص.py`: Text processing and cleaning
+- `محلل_الكلمات.py`: Single word analysis
+- `محلل_المركبات.py`: N-gram analysis (Bigrams/Trigrams)
+- `مستخرج_الكيانات.py`: Named entity extraction
+- `منشئ_التقرير_التفاعلي.py`: Interactive report generation
+
+## Contributing
+
+We welcome contributions! You can contribute by:
+
+1. Opening an [issue](https://github.com/ayzem88/data-analyzer/issues) to report problems or suggest new features
+2. Submitting a [pull request](https://github.com/ayzem88/data-analyzer/pulls) to add features or fix bugs
+3. Improving analysis algorithms
+4. Adding more entity databases
+
+## License
+
+This project is licensed under [MIT License](LICENSE) - see the LICENSE file for details.
+
+## Developer
+
+Developed by **Ayman Al-Tayyib Ben Naji** ([ayzem88](https://github.com/ayzem88))
+
+## Contact
+
+For inquiries or contributions, you can contact me via:
+- Email: [aymen.nji@gmail.com](mailto:aymen.nji@gmail.com)
+
+## Notes
+
+- All results are saved in txt files
+- Analyzer settings can be modified in main files
+- Make sure `stop_words.txt` exists for stop words
+- Names and countries can be added to database files
+
+## Future Development
+
+- [ ] Add graphical user interface (GUI)
+- [ ] Support for more file formats
+- [ ] Improve entity extraction algorithms
+- [ ] Add more analysis metrics
+- [ ] Support for multilingual analysis
+
+</div>
